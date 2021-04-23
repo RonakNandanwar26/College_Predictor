@@ -1,0 +1,55 @@
+{% extends 'common.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} Contact Us {% endblock %}
+
+{% block content %}
+        <!-- pages-title-start -->
+		<section class="contact-img-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="con-text">
+                            <h2 class="page-title">Predict by GujCET Marks</h2>
+                            <p><a href="#">Home</a> | Gujcet</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+		<!-- pages-title-end -->
+		<!-- contact content section start -->
+		<section class="top-map-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3>College Prediction Form</h3>
+                            </div>
+                            <form  id="contact_form" method="post"> {% csrf_token %}
+                                {{ form | crispy }}
+                                <div class="col-md-12">
+                                    <div class="buttons">
+                                        <div class="pull-right">
+                                            <input class="btn btn-primary" style="margin-bottom: 100px" type="submit" value="Submit">
+                                        </div>
+                                    </div>
+                                </div>
+                                <table style="width:100%">
+                                    <th><center>College in which you can get admissions</center></th>
+                                    {% for prediction in predictions %}
+                                    <tr>
+                                        <td>
+                                            {{ prediction }}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}
